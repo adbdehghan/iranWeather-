@@ -14,6 +14,14 @@
 		645B69681A360FF4004E6363 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 645B69671A360FF4004E6363 /* Images.xcassets */; };
 		645B696B1A360FF4004E6363 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 645B69691A360FF4004E6363 /* LaunchScreen.xib */; };
 		645B69771A360FF4004E6363 /* Iran_WeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 645B69761A360FF4004E6363 /* Iran_WeatherTests.m */; };
+		645B69821A3611E4004E6363 /* LaunchScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 645B69811A3611E4004E6363 /* LaunchScreen.m */; };
+		645B698E1A361358004E6363 /* PFGoldenSectionSpiral.m in Sources */ = {isa = PBXBuildFile; fileRef = 645B69871A361358004E6363 /* PFGoldenSectionSpiral.m */; };
+		645B698F1A361358004E6363 /* ZYQSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = 645B698D1A361358004E6363 /* ZYQSphereView.m */; };
+		645B69911A361825004E6363 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645B69901A361825004E6363 /* Foundation.framework */; };
+		645B69931A361836004E6363 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645B69921A361836004E6363 /* UIKit.framework */; };
+		645B69951A361849004E6363 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645B69941A361849004E6363 /* CoreGraphics.framework */; };
+		645B699B1A3622E9004E6363 /* Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 645B699A1A3622E9004E6363 /* Gradient.m */; };
+		645B69A01A36562A004E6363 /* Climacons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 645B699F1A36562A004E6363 /* Climacons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +48,25 @@
 		645B69701A360FF4004E6363 /* Iran WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Iran WeatherTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		645B69751A360FF4004E6363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		645B69761A360FF4004E6363 /* Iran_WeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Iran_WeatherTests.m; sourceTree = "<group>"; };
+		645B69801A3611E4004E6363 /* LaunchScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchScreen.h; sourceTree = "<group>"; };
+		645B69811A3611E4004E6363 /* LaunchScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchScreen.m; sourceTree = "<group>"; };
+		645B69851A361358004E6363 /* PFAxisDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFAxisDirection.h; sourceTree = "<group>"; };
+		645B69861A361358004E6363 /* PFGoldenSectionSpiral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGoldenSectionSpiral.h; sourceTree = "<group>"; };
+		645B69871A361358004E6363 /* PFGoldenSectionSpiral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGoldenSectionSpiral.m; sourceTree = "<group>"; };
+		645B69881A361358004E6363 /* PFMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMatrix.h; sourceTree = "<group>"; };
+		645B69891A361358004E6363 /* PFMatrixTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMatrixTransform.h; sourceTree = "<group>"; };
+		645B698A1A361358004E6363 /* PFPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFPoint.h; sourceTree = "<group>"; };
+		645B698B1A361358004E6363 /* PFRadian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFRadian.h; sourceTree = "<group>"; };
+		645B698C1A361358004E6363 /* ZYQSphereView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYQSphereView.h; sourceTree = "<group>"; };
+		645B698D1A361358004E6363 /* ZYQSphereView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYQSphereView.m; sourceTree = "<group>"; };
+		645B69901A361825004E6363 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		645B69921A361836004E6363 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		645B69941A361849004E6363 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		645B69971A361EEC004E6363 /* SphereView_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SphereView_Prefix.pch; path = "Iran Weather/SphereView_Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		645B69991A3622E9004E6363 /* Gradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gradient.h; sourceTree = "<group>"; };
+		645B699A1A3622E9004E6363 /* Gradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gradient.m; sourceTree = "<group>"; };
+		645B699D1A3655E1004E6363 /* Climacons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Climacons.h; sourceTree = "<group>"; };
+		645B699F1A36562A004E6363 /* Climacons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Climacons.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +74,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				645B69951A361849004E6363 /* CoreGraphics.framework in Frameworks */,
+				645B69931A361836004E6363 /* UIKit.framework in Frameworks */,
+				645B69911A361825004E6363 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +96,7 @@
 				645B69591A360FF4004E6363 /* Iran Weather */,
 				645B69731A360FF4004E6363 /* Iran WeatherTests */,
 				645B69581A360FF4004E6363 /* Products */,
+				645B69961A361892004E6363 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +112,11 @@
 		645B69591A360FF4004E6363 /* Iran Weather */ = {
 			isa = PBXGroup;
 			children = (
+				645B699E1A36562A004E6363 /* Fonts */,
+				645B699C1A3655D6004E6363 /* Icons */,
+				645B69981A362290004E6363 /* Graphic */,
+				645B69841A361358004E6363 /* SphereView */,
+				645B69831A36120B004E6363 /* LaunchScreen */,
 				645B695E1A360FF4004E6363 /* AppDelegate.h */,
 				645B695F1A360FF4004E6363 /* AppDelegate.m */,
 				645B69611A360FF4004E6363 /* ViewController.h */,
@@ -117,6 +153,67 @@
 				645B69751A360FF4004E6363 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		645B69831A36120B004E6363 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				645B69801A3611E4004E6363 /* LaunchScreen.h */,
+				645B69811A3611E4004E6363 /* LaunchScreen.m */,
+			);
+			name = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		645B69841A361358004E6363 /* SphereView */ = {
+			isa = PBXGroup;
+			children = (
+				645B69971A361EEC004E6363 /* SphereView_Prefix.pch */,
+				645B69851A361358004E6363 /* PFAxisDirection.h */,
+				645B69861A361358004E6363 /* PFGoldenSectionSpiral.h */,
+				645B69871A361358004E6363 /* PFGoldenSectionSpiral.m */,
+				645B69881A361358004E6363 /* PFMatrix.h */,
+				645B69891A361358004E6363 /* PFMatrixTransform.h */,
+				645B698A1A361358004E6363 /* PFPoint.h */,
+				645B698B1A361358004E6363 /* PFRadian.h */,
+				645B698C1A361358004E6363 /* ZYQSphereView.h */,
+				645B698D1A361358004E6363 /* ZYQSphereView.m */,
+			);
+			path = SphereView;
+			sourceTree = "<group>";
+		};
+		645B69961A361892004E6363 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				645B69941A361849004E6363 /* CoreGraphics.framework */,
+				645B69921A361836004E6363 /* UIKit.framework */,
+				645B69901A361825004E6363 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		645B69981A362290004E6363 /* Graphic */ = {
+			isa = PBXGroup;
+			children = (
+				645B69991A3622E9004E6363 /* Gradient.h */,
+				645B699A1A3622E9004E6363 /* Gradient.m */,
+			);
+			name = Graphic;
+			sourceTree = "<group>";
+		};
+		645B699C1A3655D6004E6363 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				645B699D1A3655E1004E6363 /* Climacons.h */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		645B699E1A36562A004E6363 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				645B699F1A36562A004E6363 /* Climacons.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +265,7 @@
 				TargetAttributes = {
 					645B69561A360FF4004E6363 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 2Y3WDQ97KT;
 					};
 					645B696F1A360FF4004E6363 = {
 						CreatedOnToolsVersion = 6.1;
@@ -201,6 +299,7 @@
 			files = (
 				645B69661A360FF4004E6363 /* Main.storyboard in Resources */,
 				645B696B1A360FF4004E6363 /* LaunchScreen.xib in Resources */,
+				645B69A01A36562A004E6363 /* Climacons.ttf in Resources */,
 				645B69681A360FF4004E6363 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,8 +318,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				645B698F1A361358004E6363 /* ZYQSphereView.m in Sources */,
+				645B698E1A361358004E6363 /* PFGoldenSectionSpiral.m in Sources */,
+				645B69821A3611E4004E6363 /* LaunchScreen.m in Sources */,
 				645B69631A360FF4004E6363 /* ViewController.m in Sources */,
 				645B69601A360FF4004E6363 /* AppDelegate.m in Sources */,
+				645B699B1A3622E9004E6363 /* Gradient.m in Sources */,
 				645B695D1A360FF4004E6363 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,9 +448,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Iran Weather/SphereView_Prefix.pch";
 				INFOPLIST_FILE = "Iran Weather/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -355,9 +468,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Iran Weather/SphereView_Prefix.pch";
 				INFOPLIST_FILE = "Iran Weather/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_CFLAGS[arch=*]" = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -414,6 +538,7 @@
 				645B697C1A360FF4004E6363 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		645B697D1A360FF4004E6363 /* Build configuration list for PBXNativeTarget "Iran WeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +547,7 @@
 				645B697F1A360FF4004E6363 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
