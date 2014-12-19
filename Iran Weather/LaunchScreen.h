@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MKPersianFont.h"
 
 @interface LaunchScreen : UIViewController
 

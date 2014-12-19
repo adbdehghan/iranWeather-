@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
     
     Gradient *gr = [[Gradient alloc]init];
     UIImageView *uv = [[UIImageView alloc]initWithImage:[gr CreateGradient:self.view.frame.size.width Height:self.view.frame.size.height]];
@@ -34,22 +35,54 @@
     self.ribbon = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-130 , self.view.bounds.size.width, 80)];
     [self.ribbon setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.25]];
     [self.view addSubview:self.ribbon];
+
+    MKPersianFont *title = [[MKPersianFont alloc]init];
+    [title setPersianFont:@"koodak" withText:@"سازمان هواشناسی کشور" fontSize:35 textAlignment:CENTER textWrapped:YES fontColor:[UIColor whiteColor]];
+    [title setFrame:CGRectMake(0,27, self.ribbon.frame.size.width ,self.ribbon.frame.size.height)];
+    
+    [self.ribbon addSubview:title];
     
     [self AddSphere];
     
+    timer = [NSTimer scheduledTimerWithTimeInterval:2.0
+                                     target:self
+                                   selector:@selector(TimerCalled:)
+                                   userInfo:nil
+                                    repeats:NO];
+}
+
+-(void)TimerCalled:(NSTimer *)timer
+{
+    [self performSegueWithIdentifier:@"LaunchNext" sender:self];
 }
 
 - (void)AddSphere {
     sphereView = [[ZYQSphereView alloc] initWithFrame:CGRectMake(10, 60, self.view.frame.size.width-80, self.view.frame.size.width-80)];
     sphereView.center=CGPointMake(self.view.center.x, self.view.center.y-30);
     NSMutableArray *views = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 50; i++) {
-        UIButton *subV = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        subV.backgroundColor = [UIColor colorWithRed:arc4random_uniform(100)/100. green:arc4random_uniform(100)/100. blue:arc4random_uniform(100)/100. alpha:1];
-        [subV setTitle:[NSString stringWithFormat:@"%d",i] forState:UIControlStateNormal];
-        subV.layer.masksToBounds=YES;
+    
+    for (int i = 1; i <= 24; i++) {
+        UIImage *sub = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i]];
+        UIImageView *subV = [[UIImageView alloc]initWithImage:sub];
         
-        subV.layer.cornerRadius=3;
+        if (self.view.frame.size.width>500) {
+            subV.frame = CGRectMake(0, 0, 60, 60);
+        }
+        else
+            subV.frame = CGRectMake(0, 0, 30, 30);
+        
+        [views addObject:subV];
+    }
+    
+    for (int i = 1; i <= 17; i++) {
+        UIImage *sub = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i]];
+        UIImageView *subV = [[UIImageView alloc]initWithImage:sub];
+        
+        if (self.view.frame.size.width>500) {
+            subV.frame = CGRectMake(0, 0, 60, 60);
+        }
+        else
+            subV.frame = CGRectMake(0, 0, 30, 30);
         
         [views addObject:subV];
     }
