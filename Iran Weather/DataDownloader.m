@@ -14,6 +14,7 @@
 @implementation DataDownloader
 NSMutableDictionary *receivedData;
 NSMutableDictionary *citiesListData;
+NSMutableDictionary *warningsData;
 
 
 - (void)requestData:(NSString *)params withCallback:(RequestCompleteBlock)callback
@@ -38,9 +39,34 @@ NSMutableDictionary *citiesListData;
 }
 
 
+- (void)requestDataForLocation:(CLLocation *)location withCallback:(RequestCompleteBlock)callback
+{
+    CLLocationCoordinate2D coordinates = location.coordinate;
+    
+    
+    NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://mshapp.sms1000.ir/data/%@.xml",@""]]];
+    
+    JCDHTTPConnection *connection = [[JCDHTTPConnection alloc] initWithRequest:request];
+    [connection executeRequestOnSuccess:
+     ^(NSHTTPURLResponse *response, NSData *data) {
+         if (response.statusCode == 200) {
+             
+             NSDictionary *XML = [self serializedData:data];
+             receivedData = [XML valueForKey:@"row"];
+             
+             callback(YES,receivedData);
+         } else {
+             callback(NO,nil);
+         }
+     } failure:^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
+         callback(NO,nil);
+     } didSendData:nil];
+}
+
+
 - (void)RequestCitiesList:(RequestCompleteBlock)callback
 {
-    NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mshapp.sms1000.ir/list.xml"]];
+    NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mshapp.sms1000.ir/Stations.xml"]];
     
     
     JCDHTTPConnection *connection = [[JCDHTTPConnection alloc] initWithRequest:request];
@@ -49,8 +75,8 @@ NSMutableDictionary *citiesListData;
          if (response.statusCode == 200) {
              
              NSDictionary *XML = [self serializedData:data];
-             citiesListData = [XML valueForKey:@"file"];
-             
+             citiesListData = [XML valueForKey:@"stations"];
+             citiesListData = [citiesListData valueForKey:@"station"];
              callback(YES,citiesListData);
          } else {
              callback(NO,nil);
@@ -60,6 +86,30 @@ NSMutableDictionary *citiesListData;
      } didSendData:nil];
 
 }
+
+- (void)RequestWarnings:(RequestCompleteBlock)callback
+{
+    NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mshapp.sms1000.ir/Warnings.xml"]];
+    
+    
+    JCDHTTPConnection *connection = [[JCDHTTPConnection alloc] initWithRequest:request];
+    [connection executeRequestOnSuccess:
+     ^(NSHTTPURLResponse *response, NSData *data) {
+         if (response.statusCode == 200) {
+             
+             NSDictionary *XML = [self serializedData:data];
+             warningsData = [XML valueForKey:@"Warnings"];
+             warningsData = [warningsData valueForKey:@"Warning"];
+             callback(YES,warningsData);
+         } else {
+             callback(NO,nil);
+         }
+     } failure:^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
+         callback(NO,nil);
+     } didSendData:nil];
+    
+}
+
 
 - (NSDictionary *)serializedData:(NSData *)data
 {

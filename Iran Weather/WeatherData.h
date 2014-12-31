@@ -30,6 +30,10 @@
 
 @property (assign, nonatomic) NSString *currentTemperature;
 
+@property (assign, nonatomic) NSString *preasure;
+
+@property (assign, nonatomic) NSString *horizentalView;
+
 @property (assign, nonatomic) NSString *latitude;
 
 @property (assign, nonatomic) NSString *longtitude;
@@ -51,6 +55,18 @@
 @property (assign, nonatomic) NSString *minTemperature3;
 
 @property (strong, nonatomic) NSString *conditionDescription3;
+
+@property (strong, nonatomic) NSString *forecastIconOneLabel;
+
+@property (strong, nonatomic) NSString *forecastIconTwoLabel;
+
+@property (strong, nonatomic) NSString *forecastIconThreeLabel;
+
+@property (strong, nonatomic) NSString             *forcastDaylabel1;
+
+@property (strong, nonatomic) NSString             *forcastDaylabel2;
+
+@property (strong, nonatomic) NSString             *forcastDaylabel3;
 
 - (NSString *)iconForCondition:(NSString *)condition isDay:(BOOL)isday;
 - (NSString *)descriptionForCondition:(NSString *)condition;

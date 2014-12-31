@@ -10,5 +10,5 @@
 #import "MKPersianFont.h"
 
 @interface LaunchScreen : UIViewController
-
+@property (strong, nonatomic)  UIImageView        *blurredOverlayView;
 @end

@@ -9,14 +9,22 @@
 #import "LaunchScreen.h"
 #import "ZYQSphereView.h"
 #import "Gradient.h"
+#import "Settings.h"
+#import "DBManager.h"
+#import "UIImage+ImageEffects.h"
+#import "AddLocationViewController.h"
+#import "MainViewController.h"
 
 @interface LaunchScreen ()
 {
     ZYQSphereView *sphereView;
     NSTimer *timer;
+    Settings *setting;
 }
 
 @property (strong, nonatomic) UIView *ribbon;
+
+
 
 @end
 
@@ -25,7 +33,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+    //  Initialize the blurred overlay view
+    self.blurredOverlayView = [[UIImageView alloc]initWithImage:[[UIImage alloc]init]];
+    self.blurredOverlayView.alpha = 1.0;
+    [self.blurredOverlayView setFrame:self.view.bounds];
     
     Gradient *gr = [[Gradient alloc]init];
     UIImageView *uv = [[UIImageView alloc]initWithImage:[gr CreateGradient:self.view.frame.size.width Height:self.view.frame.size.height]];
@@ -44,16 +55,28 @@
     
     [self AddSphere];
     
-    timer = [NSTimer scheduledTimerWithTimeInterval:2.0
+   // [DBManager deleteRow:@""];
+    
+//   if (![DBManager isTableExist:@"setting_table"])
+//    {
+//        [DBManager createTable];
+//    }
+
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.6
                                      target:self
                                    selector:@selector(TimerCalled:)
                                    userInfo:nil
                                     repeats:NO];
+
 }
 
 -(void)TimerCalled:(NSTimer *)timer
 {
-    [self performSegueWithIdentifier:@"LaunchNext" sender:self];
+//    setting = [DBManager selectSetting];
+
+        [self performSegueWithIdentifier:@"LaunchNext" sender:self];
+
 }
 
 - (void)AddSphere {
@@ -95,19 +118,51 @@
     [sphereView timerStart];
 }
 
+- (void)setBlurredOverlayImage
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^ {
+        
+        //  Take a screen shot of this controller's view
+        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        [self.view.layer renderInContext:context];
+        UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
+        
+        UIGraphicsEndImageContext();
+        
+        //  Blur the screen shot
+        UIImage *blurred = [image applyBlurWithRadius:20
+                                            tintColor:[UIColor colorWithWhite:0.15 alpha:0.5]
+                                saturationDeltaFactor:1.5
+                                            maskImage:nil];
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            //  Set the blurred overlay view's image with the blurred screenshot
+            self.blurredOverlayView.image = blurred;
+        });
+    });
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [self setBlurredOverlayImage];
+    if (![segue.identifier isEqual:@"LaunchNext"])
+    {
+        AddLocationViewController *detination = [segue destinationViewController];
+        detination.blurredOverlayView = self.blurredOverlayView;
+    }
+        MainViewController *destination = [segue destinationViewController];
+    destination.setting = setting;
 }
-*/
+
 
 @end

@@ -13,6 +13,7 @@ typedef void (^RequestCompleteBlock) (BOOL wasSuccessful,NSMutableDictionary *re
 @interface DataDownloader : NSObject
 
 - (void)RequestCitiesList:(RequestCompleteBlock)callback;
-- (void)requestData:(NSString *)params
-                 withCallback:(RequestCompleteBlock)callback;
+- (void)RequestWarnings:(RequestCompleteBlock)callback;
+- (void)requestData:(NSString *)params withCallback:(RequestCompleteBlock)callback;
+- (void)requestDataForLocation:(CLLocation *)location withCallback:(RequestCompleteBlock)callback;
 @end
