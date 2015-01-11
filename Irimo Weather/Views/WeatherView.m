@@ -722,7 +722,8 @@
     [horizentalView addSubview:image5];
     
     [self.container addSubview:feelsTempView];
-  //  [feelsTempView addSubview:image6];
+    [feelsTempView addSubview:image6];
+    
     [self initializeCurrentTemperatureLabel:30];
     [self initializeUnitLabels:30 X:24 FontSize:8];
     [self initializeWeatherDataLabels:18 labelSize:circleSize Y:5];
