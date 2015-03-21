@@ -57,7 +57,6 @@
 		645B69601A360FF4004E6363 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 645B695F1A360FF4004E6363 /* AppDelegate.m */; };
 		645B69661A360FF4004E6363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645B69641A360FF4004E6363 /* Main.storyboard */; };
 		645B69681A360FF4004E6363 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 645B69671A360FF4004E6363 /* Images.xcassets */; };
-		645B696B1A360FF4004E6363 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 645B69691A360FF4004E6363 /* LaunchScreen.xib */; };
 		645B69771A360FF4004E6363 /* Irimo_WeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 645B69761A360FF4004E6363 /* Irimo_WeatherTests.m */; };
 		645B69821A3611E4004E6363 /* LaunchScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 645B69811A3611E4004E6363 /* LaunchScreen.m */; };
 		645B698E1A361358004E6363 /* PFGoldenSectionSpiral.m in Sources */ = {isa = PBXBuildFile; fileRef = 645B69871A361358004E6363 /* PFGoldenSectionSpiral.m */; };
@@ -190,7 +189,6 @@
 		645B695F1A360FF4004E6363 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		645B69651A360FF4004E6363 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		645B69671A360FF4004E6363 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		645B696A1A360FF4004E6363 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		645B69701A360FF4004E6363 /* Irimo Weather.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Irimo Weather.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		645B69751A360FF4004E6363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		645B69761A360FF4004E6363 /* Irimo_WeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Irimo_WeatherTests.m; sourceTree = "<group>"; };
@@ -334,6 +332,21 @@
 			path = StartupImages;
 			sourceTree = "<group>";
 		};
+		64244A371A9637B400686786 /* Data & Settings */ = {
+			isa = PBXGroup;
+			children = (
+				64E0D1F71A40AE41001D9CED /* WeatherData.h */,
+				64E0D1F81A40AE41001D9CED /* WeatherData.m */,
+				64E0D20D1A40B854001D9CED /* DataDownloader.h */,
+				64E0D20E1A40B854001D9CED /* DataDownloader.m */,
+				6454A0FF1A4598AB00573F74 /* StateManager.h */,
+				6454A1001A4598AB00573F74 /* StateManager.m */,
+				6454A0FA1A4589D300573F74 /* Settings.h */,
+				6454A0FB1A4589D300573F74 /* Settings.m */,
+			);
+			name = "Data & Settings";
+			sourceTree = "<group>";
+		};
 		6454A0BF1A449C7600573F74 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,7 +416,6 @@
 				645B695F1A360FF4004E6363 /* AppDelegate.m */,
 				645B69641A360FF4004E6363 /* Main.storyboard */,
 				645B69671A360FF4004E6363 /* Images.xcassets */,
-				645B69691A360FF4004E6363 /* LaunchScreen.xib */,
 				645B695A1A360FF4004E6363 /* Supporting Files */,
 			);
 			path = "Irimo Weather";
@@ -634,14 +646,7 @@
 				6454A0E61A45897800573F74 /* DBManager */,
 				6454A0E91A45897800573F74 /* FMDB */,
 				6454A0BF1A449C7600573F74 /* Views */,
-				64E0D1F71A40AE41001D9CED /* WeatherData.h */,
-				64E0D1F81A40AE41001D9CED /* WeatherData.m */,
-				64E0D20D1A40B854001D9CED /* DataDownloader.h */,
-				64E0D20E1A40B854001D9CED /* DataDownloader.m */,
-				6454A0FF1A4598AB00573F74 /* StateManager.h */,
-				6454A1001A4598AB00573F74 /* StateManager.m */,
-				6454A0FA1A4589D300573F74 /* Settings.h */,
-				6454A0FB1A4589D300573F74 /* Settings.m */,
+				64244A371A9637B400686786 /* Data & Settings */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -766,7 +771,6 @@
 				6407DEC41A5B3D24007C215F /* 23.png in Resources */,
 				6407DECB1A5B3D24007C215F /* 8.png in Resources */,
 				6407DEBF1A5B3D24007C215F /* 19.png in Resources */,
-				645B696B1A360FF4004E6363 /* LaunchScreen.xib in Resources */,
 				6407DECA1A5B3D24007C215F /* 7.png in Resources */,
 				6407DEB91A5B3D24007C215F /* 13.png in Resources */,
 				6407DEC01A5B3D24007C215F /* 2.png in Resources */,
@@ -890,14 +894,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		645B69691A360FF4004E6363 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				645B696A1A360FF4004E6363 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -997,6 +993,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Irimo Weather";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1019,6 +1016,7 @@
 				"OTHER_CFLAGS[arch=*]" = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "Irimo Weather";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

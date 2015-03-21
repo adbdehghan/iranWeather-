@@ -189,10 +189,6 @@
         {
             [self initializeCirclesForIpad];
         }
-        
-        
-        
-        
     }
     return self;
 }
@@ -329,7 +325,7 @@
     
     self.feelsTempLabel = [[UILabel alloc]initWithFrame:CGRectMake(-1,y, size, size)];
     [self.feelsTempLabel setAdjustsFontSizeToFitWidth:YES];
-    [self.feelsTempLabel setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
+    [self.feelsTempLabel setFont:[UIFont fontWithName:@"B Koodak" size:fontSize-4]];
     [self.feelsTempLabel setBackgroundColor:[UIColor clearColor]];
     [self.feelsTempLabel setTextColor:[UIColor whiteColor]];
     [self.feelsTempLabel setTextAlignment:NSTextAlignmentCenter];
@@ -396,11 +392,20 @@
     
     feelsTempView =[[UIView alloc]initForAutoLayout];
     
+    UILabel *windDirectionStuff = [[UILabel alloc]initWithFrame:CGRectMake(3,14, 30, 30)];
+    
+    [windDirectionStuff setAdjustsFontSizeToFitWidth:YES];
+    [windDirectionStuff setFont:[UIFont fontWithName:@"B Koodak" size:30]];
+    [windDirectionStuff setBackgroundColor:[UIColor clearColor]];
+    [windDirectionStuff setTextColor:[UIColor whiteColor]];
+    [windDirectionStuff setTextAlignment:NSTextAlignmentRight];
+    windDirectionStuff.text = @"-";
+    [windDirectionView addSubview:windDirectionStuff];
+    
     self.windDirectionContainer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.windDirectionContainer setCenter:image3.center];
     [self DrawArrow:self.windDirectionContainer];
-    
-    
+
     
     [self.container addSubview:humidityView];
     [humidityView addSubview:image1];
@@ -418,7 +423,7 @@
     [horizentalView addSubview:image5];
     
     [self.container addSubview:feelsTempView];
-   // [feelsTempView addSubview:image6];
+    [feelsTempView addSubview:image6];
     
     [self initializeCurrentTemperatureLabel:30];
     [self initializeWeatherDataLabels:16 labelSize:circleSize Y:6];
@@ -496,9 +501,21 @@
     
     feelsTempView =[[UIView alloc]initForAutoLayout];
     
+    
+    UILabel *windDirectionStuff = [[UILabel alloc]initWithFrame:CGRectMake(7,18, 30, 30)];
+    
+    [windDirectionStuff setAdjustsFontSizeToFitWidth:YES];
+    [windDirectionStuff setFont:[UIFont fontWithName:@"B Koodak" size:30]];
+    [windDirectionStuff setBackgroundColor:[UIColor clearColor]];
+    [windDirectionStuff setTextColor:[UIColor whiteColor]];
+    [windDirectionStuff setTextAlignment:NSTextAlignmentRight];
+    windDirectionStuff.text = @"-";
+    [windDirectionView addSubview:windDirectionStuff];
+    
     self.windDirectionContainer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.windDirectionContainer setCenter:image3.center];
     [self DrawArrow:self.windDirectionContainer];
+    
     
     
     [self.container addSubview:humidityView];
@@ -518,6 +535,7 @@
     
     [self.container addSubview:feelsTempView];
     [feelsTempView addSubview:image6];
+    
     [self initializeCurrentTemperatureLabel:30];
     [self initializeWeatherDataLabels:18 labelSize:circleSize Y:6];
     [self initializeUnitLabels:35 X:27 FontSize:8];
@@ -594,9 +612,21 @@
     
     feelsTempView =[[UIView alloc]initForAutoLayout];
     
+    
+    UILabel *windDirectionStuff = [[UILabel alloc]initWithFrame:CGRectMake(10,21, 30, 30)];
+    
+    [windDirectionStuff setAdjustsFontSizeToFitWidth:YES];
+    [windDirectionStuff setFont:[UIFont fontWithName:@"B Koodak" size:30]];
+    [windDirectionStuff setBackgroundColor:[UIColor clearColor]];
+    [windDirectionStuff setTextColor:[UIColor whiteColor]];
+    [windDirectionStuff setTextAlignment:NSTextAlignmentRight];
+    windDirectionStuff.text = @"-";
+    [windDirectionView addSubview:windDirectionStuff];
+    
     self.windDirectionContainer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.windDirectionContainer setCenter:image3.center];
     [self DrawArrow:self.windDirectionContainer];
+    
     
     [self.container addSubview:humidityView];
     [humidityView addSubview:image1];
@@ -615,6 +645,7 @@
     
     [self.container addSubview:feelsTempView];
     [feelsTempView addSubview:image6];
+    
     [self initializeCurrentTemperatureLabel:30];
     [self initializeWeatherDataLabels:20 labelSize:circleSize Y:6];
     [self initializeUnitLabels:40 X:30 FontSize:10];
@@ -693,6 +724,17 @@
     feelsTempView =[[UIView alloc]initForAutoLayout];
     
     
+    
+    UILabel *windDirectionStuff = [[UILabel alloc]initWithFrame:CGRectMake(4,15, 30, 30)];
+    
+    [windDirectionStuff setAdjustsFontSizeToFitWidth:YES];
+    [windDirectionStuff setFont:[UIFont fontWithName:@"B Koodak" size:30]];
+    [windDirectionStuff setBackgroundColor:[UIColor clearColor]];
+    [windDirectionStuff setTextColor:[UIColor whiteColor]];
+    [windDirectionStuff setTextAlignment:NSTextAlignmentRight];
+    windDirectionStuff.text = @"-";
+    [windDirectionView addSubview:windDirectionStuff];
+    
     self.windDirectionContainer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.windDirectionContainer setCenter:image3.center];
     
@@ -734,6 +776,7 @@
     [image3 addSubview:self.windDirectionContainer];
     [image4 addSubview:self.preasureLabel];
     [image5 addSubview:self.horizentalViewLabel];
+    
     [image6 addSubview:self.feelsTempLabel];
     
     [image2 addSubview:self.windSpeedUnitLabel];
@@ -805,6 +848,18 @@
     
     feelsTempView =[[UIView alloc]initForAutoLayout];
     [self initializeCurrentTemperatureLabel:80];
+    
+    
+    UILabel *windDirectionStuff = [[UILabel alloc]initWithFrame:CGRectMake(23,34, 30, 30)];
+    
+    [windDirectionStuff setAdjustsFontSizeToFitWidth:YES];
+    [windDirectionStuff setFont:[UIFont fontWithName:@"B Koodak" size:30]];
+    [windDirectionStuff setBackgroundColor:[UIColor clearColor]];
+    [windDirectionStuff setTextColor:[UIColor whiteColor]];
+    [windDirectionStuff setTextAlignment:NSTextAlignmentRight];
+    windDirectionStuff.text = @"-";
+    [windDirectionView addSubview:windDirectionStuff];
+    
     self.windDirectionContainer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.windDirectionContainer setCenter:image3.center];
     [self DrawArrow:self.windDirectionContainer];
@@ -1085,15 +1140,19 @@
     [feelsLikeTempLabel setTextColor:[UIColor whiteColor]];
     [feelsLikeTempLabel setTextAlignment:NSTextAlignmentRight];
     feelsLikeTempLabel.text = @"دمای احساسی";
-   // [feelsTempView addSubview:feelsLikeTempLabel];
+    [feelsTempView addSubview:feelsLikeTempLabel];
 }
 
 
 - (void)spinLayer:(CALayer *)inLayer duration:(CFTimeInterval)inDuration
-        direction:(int)direction degrees:(CGFloat)degrees
+        direction:(int)direction degrees:(CGFloat)degrees wind:(NSString*)windSpeed
 {
-    CABasicAnimation* rotationAnimation;
+    if ([windSpeed isEqualToString:@"0.0"]) {
+        inLayer.opacity = 0;
+    }
     
+    CABasicAnimation* rotationAnimation;
+
     // Rotate about the z axis
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotationAnimation.fromValue = [[inLayer presentationLayer] valueForKeyPath:@"transform.rotation.z"];

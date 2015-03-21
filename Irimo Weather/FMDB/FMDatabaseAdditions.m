@@ -9,6 +9,7 @@
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
 
+
 @interface FMDatabase (PrivateStuff)
 - (FMResultSet *)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray*)arrayArgs orDictionary:(NSDictionary *)dictionaryArgs orVAList:(va_list)args;
 @end
@@ -74,7 +75,7 @@ return ret;
 /*
  get table with list of tables: result colums: type[STRING], name[STRING],tbl_name[STRING],rootpage[INTEGER],sql[STRING]
  check if table exist in database  (patch from OZLB)
-*/
+ */
 - (FMResultSet*)getSchema {
     
     //result colums: type[STRING], name[STRING],tbl_name[STRING],rootpage[INTEGER],sql[STRING]
@@ -83,9 +84,9 @@ return ret;
     return rs;
 }
 
-/* 
+/*
  get table schema: result colums: cid[INTEGER], name,type [STRING], notnull[INTEGER], dflt_value[],pk[INTEGER]
-*/
+ */
 - (FMResultSet*)getTableSchema:(NSString*)tableName {
     
     //result colums: cid[INTEGER], name,type [STRING], notnull[INTEGER], dflt_value[],pk[INTEGER]
@@ -118,6 +119,7 @@ return ret;
 }
 
 #if SQLITE_VERSION_NUMBER >= 3007017
+
 - (uint32_t)applicationID {
     
     uint32_t r = 0;
@@ -133,8 +135,9 @@ return ret;
     return r;
 }
 
+#if TARGET_OS_MAC && !TARGET_OS_IPHONE
 - (NSString*)applicationIDString {
-    NSString *s = NSFileTypeForHFSTypeCode([self applicationID]);
+    NSString *s =  NSFileTypeForHFSTypeCode([self applicationID]);
     
     assert([s length] == 6);
     
@@ -163,6 +166,8 @@ return ret;
 
 #endif
 
+#endif
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-implementations"
 
@@ -188,14 +193,14 @@ return ret;
             if (_busyRetryTimeout && (numberOfRetries++ > _busyRetryTimeout)) {
                 NSLog(@"%s:%d Database busy (%@)", __FUNCTION__, __LINE__, [self databasePath]);
                 NSLog(@"Database busy");
-            }          
-        } 
+            }
+        }
         else if (rc != SQLITE_OK) {
             validationSucceeded = NO;
             if (error) {
-                *error = [NSError errorWithDomain:NSCocoaErrorDomain 
+                *error = [NSError errorWithDomain:NSCocoaErrorDomain
                                              code:[self lastErrorCode]
-                                         userInfo:[NSDictionary dictionaryWithObject:[self lastErrorMessage] 
+                                         userInfo:[NSDictionary dictionaryWithObject:[self lastErrorMessage]
                                                                               forKey:NSLocalizedDescriptionKey]];
             }
         }

@@ -130,12 +130,25 @@
     {
         NSString * temp = [NSString stringWithFormat:@"GOOGLE Block Says Unreachable(%@)", reachability.currentReachabilityString];
         NSLog(@"%@", temp);
-        [self performSelectorInBackground:@selector(checkForCityName) withObject:nil];
         
+        if ([StateManager local]==local)
+        {
+            [self performSelectorInBackground:@selector(checkForCityName) withObject:nil];
+        }
+        else
+        {
+            NSMutableArray *settingArray=[DBManager selectSetting];
+            if ([settingArray count]>0) {
+                Settings *setting = [settingArray objectAtIndex:0];
+                cityName = setting.cityInfo;
+                
+                [self performSelectorInBackground:@selector(checkForCityName) withObject:nil];
+            }
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             for(WeatherView *weatherView in self.pagingScrollView.subviews) {
                 
-                weatherView.conditionIconLabel.text = @"☹";
+                //  weatherView.conditionIconLabel.text = @"☹";
                 weatherView.locationLabel.text = @"عدم اتصال به اینترت ";
             }
             
@@ -146,16 +159,10 @@
     
     [self performSelectorInBackground:@selector(setBlurredOverlayThread) withObject:nil];
     
-    
-    
-    
-    
 }
 
 -(void)checkForCityName
 {
-    
-    
     NSString *filePath;
     filePath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"xml"];
     NSData *fileData = [NSData dataWithContentsOfFile:filePath];
@@ -163,17 +170,25 @@
     self.citiesCodeDictionary = [self.citiesCodeDictionary valueForKey:@"cities"];
     self.citiesCodeDictionary = [self.citiesCodeDictionary valueForKey:@"city"];
     [NSThread sleepForTimeInterval:1];
-    while ([cityName isEqual:@""]&&cityName!=nil) {
+    //cityName = [cityName stringByReplacingOccurrencesOfString:@"مهرآباد" withString:@""];
+    
+    while ([cityName isEqual:@""] && cityName!=nil)
+    {
         
     }
-    for (NSString* item in self.citiesCodeDictionary) {
-        NSString *name =[[item valueForKey:@"name"]valueForKey:@"text"];
-        if ([name containsString:cityName]) {
-            cityCode =[[item valueForKey:@"id"]valueForKey:@"text"];
-            [self initializeAlertView];
+    if (cityName!=nil) {
+        for (NSString* item in self.citiesCodeDictionary)
+        {
+            NSString *name =[[item valueForKey:@"name"]valueForKey:@"text"];
+            
+            if ([cityName rangeOfString:name options:NSCaseInsensitiveSearch].location != NSNotFound)
+            {
+                cityCode =[[item valueForKey:@"id"]valueForKey:@"text"];
+                [self initializeAlertView];
+                break;
+            }
         }
     }
-    
 }
 -(void)setBlurredOverlayThread
 {
@@ -289,24 +304,38 @@
         [self.getData RequestCitiesList:callback];
         
     }
+    else
+    {
+        
+    }
     
     [self initializeMenu];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    
+    NSMutableArray *settingArray=[DBManager selectSetting];
+    if ([settingArray count]==0 && [StateManager local] != local)
+    {
+        self.pageControl.numberOfPages+=1;
+        
+        WeatherView *nonlocalWeatherView = [[WeatherView alloc]initWithFrame:self.view.bounds];
+        
+        //    localWeatherView.local = YES;
+        nonlocalWeatherView.delegate = self;
+        
+        nonlocalWeatherView.tag = 404;
+        
+        [self.pagingScrollView addSubview:nonlocalWeatherView isLaunch:YES];
+        //            self.blurredOverlayView.image = [UIImage imageNamed:@"MainImage.png"];
+        [self performSelectorInBackground:@selector(setBlurredOverlayThread) withObject:nil];
+        [self addLocationButtonPressed];
+    }
+}
+
 -(void)initializeMenu
 {
-    //    menuView = [[CHTumblrMenuView alloc] init];
-    //
-    //    [menuView addMenuItemWithTitle:@"هشدارها" andIcon:[UIImage imageNamed:@"warning.png"] andSelectedBlock:^{
-    //        NSLog(@"Text selected");
-    //    }];
-    //    [menuView addMenuItemWithTitle:@"تنظیمات" andIcon:[UIImage imageNamed:@"setting.png"] andSelectedBlock:^{
-    //        [self settingsButtonPressed];
-    //    }];
-    //    [menuView addMenuItemWithTitle:@"درباره ما" andIcon:[UIImage imageNamed:@"about.png"] andSelectedBlock:^{
-    //        NSLog(@"Quote selected");
-    //
-    //    }];
     
     NSArray *images = @[
                         [UIImage imageNamed:@"warning"],
@@ -362,7 +391,7 @@
     [self.view addSubview:self.pagingScrollView];
     
     //  Initialize the page control
-    self.pageControl = [[UIPageControl alloc]initWithFrame: CGRectMake(0, CGRectGetHeight(self.view.bounds) - (self.view.bounds.size.height*.21),
+    self.pageControl = [[UIPageControl alloc]initWithFrame: CGRectMake(0, CGRectGetHeight(self.view.bounds) - (self.view.bounds.size.height*.214),
                                                                        CGRectGetWidth(self.view.bounds), 32)];
     [self.pageControl setHidesForSinglePage:YES];
     [self.pageControl setUserInteractionEnabled:NO];
@@ -502,9 +531,12 @@
             [item removeFromSuperview];
         }
     }
-    
+    weatherView.isDay = [wd isDay];
     weatherView.locationLabel.text = wd.stationName;
     weatherView.updatedLabel.text = wd.lastUpdate;
+    
+    weatherView.feelsTempLabel.text = [self ConvertTemperature:wd.feelsLikeTemp];
+    
     weatherView.currentTemperatureLabel.text = [self ConvertTemperature:wd.currentTemperature];
     weatherView.conditionDescriptionLabel.text = wd.conditionDescription;
     weatherView.conditionIconLabel.text = wd.icon;
@@ -514,7 +546,7 @@
     
     weatherView.horizentalViewUnitLabel.text = @"Km";
     
-    weatherView.preasureUnitLabel.text = @"mBar";
+    weatherView.preasureUnitLabel.text = @"hpa";
     
     if ([StateManager speedScale]==msScale) {
         weatherView.windSpeedUnitLabel.text = @"m/s";
@@ -524,7 +556,15 @@
     
     
     weatherView.preasureLabel.text = wd.preasure;
-    weatherView.windSpeedLabel.text = [self ConvertSpeed:wd.windSpeed];
+    
+    if ([wd.windSpeed isEqualToString:@"0.0"])
+    {
+        weatherView.windSpeedLabel.text = @"آرام";
+        weatherView.windSpeedUnitLabel.text = @"";
+    }
+    else
+        weatherView.windSpeedLabel.text = [self ConvertSpeed:wd.windSpeed];
+    
     weatherView.horizentalViewLabel.text = [NSString stringWithFormat:@"%.0f",floor([wd.horizentalView integerValue]*.001)];
     weatherView.forecastIconOneLabel.text = wd.forecastIconOneLabel;
     weatherView.forecastIconTwoLabel.text = wd.forecastIconTwoLabel;
@@ -545,14 +585,15 @@
     weatherView.forcastDaylabel1.text = wd.forcastDaylabel1;
     weatherView.forcastDaylabel2.text = wd.forcastDaylabel2;
     weatherView.forcastDaylabel3.text = wd.forcastDaylabel3;
-    weatherView.isDay = [wd isDay];
-    [weatherView spinLayer:weatherView.windDirectionContainer.layer duration:.7 direction:-1 degrees:[wd.windDirection floatValue]];
+    
+    [weatherView spinLayer:weatherView.windDirectionContainer.layer duration:.7 direction:-1 degrees:[wd.windDirection floatValue]+180 wind:wd.windSpeed];
     [weatherView setWeatherCondition:wd.conditionDescriptionForVisualEffect];
     
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
+    [self.locationManager stopUpdatingLocation];
     CLLocation *location = [locations lastObject];
     
     CLLocationCoordinate2D currentCoordinates = location.coordinate;
@@ -614,7 +655,7 @@
                 
                 for(WeatherView *weatherView in self.pagingScrollView.subviews) {
                     
-                    weatherView.conditionIconLabel.text = @"☹";
+                    // weatherView.conditionIconLabel.text = @"☹";
                     weatherView.locationLabel.text = @"وجود مشکل در سرور";
                     
                 }
@@ -636,7 +677,7 @@
     for(WeatherView *weatherView in self.pagingScrollView.subviews) {
         if (weatherView.tag==0)
         {
-            weatherView.conditionIconLabel.text = @"☹";
+            //   weatherView.conditionIconLabel.text = @"☹";
             weatherView.locationLabel.text = @"موقعیت پیدا نشد!";
         }
     }

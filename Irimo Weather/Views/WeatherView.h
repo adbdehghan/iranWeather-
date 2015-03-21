@@ -101,7 +101,7 @@
 
 
 - (void)spinLayer:(CALayer *)inLayer duration:(CFTimeInterval)inDuration
-        direction:(int)direction degrees:(CGFloat)degrees;
+        direction:(int)direction degrees:(CGFloat)degrees wind:(NSString*)windSpeed;
 
 -(void)setWeatherCondition:(NSString*)condition;
 @end

@@ -26,7 +26,7 @@
     self.lastUpdate = [self getLastUpdateTime:lastUpdateText];
     
     self.humidity = [[data valueForKey:@"u"]valueForKey:@"text"];
-    self.preasure =[[data valueForKey:@"p"]valueForKey:@"text"];
+    self.preasure =[[data valueForKey:@"p0"]valueForKey:@"text"];
     self.horizentalView = [[data valueForKey:@"vv"]valueForKey:@"text"];
     self.windSpeed = [NSString stringWithFormat:@"%.1f",[[[data valueForKey:@"ff"]valueForKey:@"text"]floatValue]/2];
     self.windDirection = [[data valueForKey:@"dd"]valueForKey:@"text"];
@@ -248,16 +248,24 @@
     NSInteger hour = [components hour];
     NSInteger minute = [components minute];
     
+    if (hour==0) {
+        hour =24;
+    }
+    
     NSDateComponents *componentsNow = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]];
     NSInteger hourNow = [componentsNow hour];
     NSInteger minuteNow = [componentsNow minute];
+    
+    if (hourNow==0) {
+        hourNow = 24;
+    }
     
     NSInteger hourNew = (hourNow - hour)*60;
     NSInteger minuteNew = (minuteNow - minute);
     
     NSInteger lastUpdate = hourNew+minuteNew;
     NSString *timeH =[NSString stringWithFormat:@"%ld",(long)lastUpdate];
-
+    
     timeH= [ timeH stringByAppendingString:@" دقیقه قبل"];
     
     return timeH;
@@ -265,19 +273,30 @@
 
 -(BOOL)isDay{
     
-    NSDate * now = [NSDate date];
+
+    
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"hh"];
-    NSString *newDateString = [outputFormatter stringFromDate:now];
-    NSLog(@"newDateString %@", newDateString);
-    if ([newDateString doubleValue]>=18 && [newDateString doubleValue]<=23) {
-        return NO;
+    
+    NSDate * now = [NSDate date];
+    
+  
+        
+        [outputFormatter setDateFormat:@"HH"];
+        
+        NSString *newDateString = [outputFormatter stringFromDate:now];
+        
+        if ([newDateString doubleValue]>=18 && [newDateString doubleValue]<=23) {
+            return NO;
+        }
+        
+        else if([newDateString doubleValue]>=0&&[newDateString doubleValue]<=5)
+            return NO;
+        
+        return YES;
+        
     }
     
-    else if([newDateString doubleValue]>=0&&[newDateString doubleValue]<=4)
-        return NO;
-    
-    return YES;
-}
+
+
 
 @end

@@ -53,6 +53,7 @@
     
     [super viewDidLoad];
     
+
     self.citiesList = [[NSMutableArray alloc]init];
     self.cityInfo = [[NSMutableDictionary alloc]init];
     
@@ -67,8 +68,10 @@
 //    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     self.view.backgroundColor = [UIColor clearColor];
     self.view.opaque = NO;
-
+    
     [self.view addSubview:self.blurredOverlayView];
+
+
     
     
     PendulumView *pendulum = [[PendulumView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-50, self.view.frame.size.height/2, 100, 40) ballColor:[UIColor whiteColor] ballDiameter:14];
@@ -99,10 +102,7 @@
                 if (item.tag == 12) {
                     [item removeFromSuperview];
                 }
-
             }
-            
-
         }
         
         else {

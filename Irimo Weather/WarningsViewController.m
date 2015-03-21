@@ -104,7 +104,7 @@ APPaginalTableViewDelegate >
             [container addSubview:_paginalTableView];
             
             
-   
+            
             [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
             
             for (UIView *item in self.view.subviews) {
@@ -123,7 +123,7 @@ APPaginalTableViewDelegate >
     };
     
     [self.getData RequestWarnings:callback];
-
+    
 }
 
 - (DataDownloader *)getData
@@ -197,6 +197,11 @@ APPaginalTableViewDelegate >
     NSString *text =[[[self.warningsTitle objectAtIndex:index]valueForKey:@"Title"]valueForKey:@"text"];
     text = [text stringByAppendingString:[NSString stringWithFormat:@"   -   %@",[[[self.warningsTitle objectAtIndex:index]valueForKey:@"Date"]valueForKey:@"text"]]];
     
+    if (text==nil)
+    {
+        text =[[[self.warningsTitle objectAtIndex:index]valueForKey:@"Date"]valueForKey:@"text"];
+    }
+    
     UILabel *labelCollapsed = [[UILabel alloc] initWithFrame:CGRectMake(0, 0.f, container.bounds.size.width, 50.f)];
     labelCollapsed.text = text;
     
@@ -227,7 +232,7 @@ APPaginalTableViewDelegate >
     [labelExpanded setTextAlignment:NSTextAlignmentRight];
     
     //[labelExpanded setAdjustsFontSizeToFitWidth:YES];
-    
+    [labelExpanded setEditable:NO];
     [labelExpanded setFont:[UIFont fontWithName:@"B Koodak" size:24]];
     [labelExpanded setBackgroundColor:[UIColor clearColor]];
     [labelExpanded setTextColor:[UIColor whiteColor]];
@@ -241,13 +246,13 @@ APPaginalTableViewDelegate >
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

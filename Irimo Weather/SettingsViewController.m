@@ -133,7 +133,7 @@
 
 - (void)initializeLocationsTableView
 {
-    self.locationsTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0.9 * self.view.center.y,
+    self.locationsTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 253,
                                                                            CGRectGetWidth(self.view.bounds), self.view.center.y)
                                                           style:UITableViewStylePlain];
     self.locationsTableView.dataSource = self;
@@ -182,7 +182,7 @@
     static const CGFloat fontSize = 20;
     
     // Initialize table view title label
-    self.locationsTableViewTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0.775 * self.view.center.y,
+    self.locationsTableViewTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 220,
                                                                                  CGRectGetWidth(self.view.bounds), 1.5 * fontSize)];
     [self.locationsTableViewTitleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:fontSize]];
     [self.locationsTableViewTitleLabel setTextColor:[UIColor whiteColor]];
@@ -192,7 +192,7 @@
     
     // Initialize table view title separator
     self.tableSeparatorView = [[UIView alloc]initWithFrame:CGRectMake(16, 0, CGRectGetWidth(self.view.bounds) - 32, 0.5)];
-    self.tableSeparatorView.center = CGPointMake(self.view.center.x, 0.9 * self.view.center.y);
+    self.tableSeparatorView.center = CGPointMake(self.view.center.x, 250);
     self.tableSeparatorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
     [self.view addSubview:self.tableSeparatorView];
 }

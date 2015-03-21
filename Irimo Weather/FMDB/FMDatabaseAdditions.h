@@ -11,7 +11,7 @@
 /** Category of additions for `<FMDatabase>` class.
  
  ### See also
-
+ 
  - `<FMDatabase>`
  */
 
@@ -23,69 +23,69 @@
 
 /** Return `int` value for query
  
- @param query The SQL query to be performed. 
+ @param query The SQL query to be performed.
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
-
+ 
  @return `int` value.
  */
 
 - (int)intForQuery:(NSString*)query, ...;
 
 /** Return `long` value for query
-
+ 
  @param query The SQL query to be performed.
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
-
+ 
  @return `long` value.
  */
 
 - (long)longForQuery:(NSString*)query, ...;
 
 /** Return `BOOL` value for query
-
+ 
  @param query The SQL query to be performed.
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
-
+ 
  @return `BOOL` value.
  */
 
 - (BOOL)boolForQuery:(NSString*)query, ...;
 
 /** Return `double` value for query
-
+ 
  @param query The SQL query to be performed.
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
-
+ 
  @return `double` value.
  */
 
 - (double)doubleForQuery:(NSString*)query, ...;
 
 /** Return `NSString` value for query
-
+ 
  @param query The SQL query to be performed.
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
-
+ 
  @return `NSString` value.
  */
 
 - (NSString*)stringForQuery:(NSString*)query, ...;
 
 /** Return `NSData` value for query
-
+ 
  @param query The SQL query to be performed.
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
-
+ 
  @return `NSData` value.
  */
 
 - (NSData*)dataForQuery:(NSString*)query, ...;
 
 /** Return `NSDate` value for query
-
+ 
  @param query The SQL query to be performed.
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
-
+ 
  @return `NSDate` value.
  */
 
@@ -102,9 +102,9 @@
 ///--------------------------------
 
 /** Does table exist in database?
-
+ 
  @param tableName The name of the table being looked for.
-
+ 
  @return `YES` if table found; `NO` if not found.
  */
 
@@ -119,7 +119,7 @@
  - `tbl_name` - The name of the table to which the object references
  - `rootpage` - The page number of the root b-tree page for tables and indices
  - `sql` - The SQL that created the entity
-
+ 
  @return `FMResultSet` of schema; `nil` on error.
  
  @see [SQLite File Format](http://www.sqlite.org/fileformat.html)
@@ -128,10 +128,10 @@
 - (FMResultSet*)getSchema;
 
 /** The schema of the database.
-
+ 
  This will be the schema for a particular table as report by SQLite `PRAGMA`, for example:
  
-    PRAGMA table_info('employees')
+ PRAGMA table_info('employees')
  
  This will report:
  
@@ -141,7 +141,7 @@
  - `notnull` - whether the field is defined as NOT NULL (i.e. values required)
  - `dflt_value` - The default value for the column
  - `pk` - Whether the field is part of the primary key of the table
-
+ 
  @param tableName The name of the table for whom the schema will be returned.
  
  @return `FMResultSet` of schema; `nil` on error.
@@ -163,11 +163,11 @@
 - (BOOL)columnExists:(NSString*)columnName inTableWithName:(NSString*)tableName;
 
 /** Test to see if particular column exists for particular table in database
-
+ 
  @param columnName The name of the column.
-
+ 
  @param tableName The name of the table.
-
+ 
  @return `YES` if column exists in table in question; `NO` otherwise.
  
  @see columnExists:inTableWithName:
@@ -209,7 +209,7 @@
 - (uint32_t)applicationID;
 
 /** Set the application ID
-
+ 
  @param appID The `uint32_t` numeric value of the application ID.
  
  @see applicationID
@@ -218,23 +218,23 @@
 - (void)setApplicationID:(uint32_t)appID;
 
 /** Retrieve application ID string
-
+ 
  @return The `NSString` value of the application ID.
-
+ 
  @see setApplicationIDString:
  */
-
+#if TARGET_OS_MAC && !TARGET_OS_IPHONE
 - (NSString*)applicationIDString;
 
 /** Set the application ID string
-
+ 
  @param string The `NSString` value of the application ID.
-
+ 
  @see applicationIDString
  */
 
 - (void)setApplicationIDString:(NSString*)string;
 #endif
-
+#endif
 
 @end

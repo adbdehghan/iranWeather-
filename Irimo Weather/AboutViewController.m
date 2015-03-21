@@ -61,7 +61,7 @@
     [self.navigationBar setItems:@[navigationItem]];
     
     UIImageView *logo = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"weatherLogo.png"]];
-    [logo setFrame:CGRectMake(self.view.bounds.size.width/2-(300/2),self.view.bounds.size.height*.5, 300, 170)];
+    [logo setFrame:CGRectMake(self.view.bounds.size.width/2-(300/2),self.view.bounds.size.height*.51, 300, 170)];
     //logo.center = self.view.center;
     logo.alpha = .6;
     [self.view addSubview:logo];
@@ -87,7 +87,19 @@
     tel.text = @"تلفکس: 66070014";
     [self.view addSubview:tel];
     
-    UILabel *sms = [[UILabel alloc]initWithFrame:CGRectMake(-10,160, self.view.bounds.size.width, 50)];
+    
+    UILabel *tel2 = [[UILabel alloc]initWithFrame:CGRectMake(-10,160, self.view.bounds.size.width, 50)];
+    
+    [tel2 setAdjustsFontSizeToFitWidth:YES];
+    [tel2 setFont:[UIFont fontWithName:@"B Koodak" size:17]];
+    [tel2 setBackgroundColor:[UIColor clearColor]];
+    [tel2 setTextColor:[UIColor whiteColor]];
+    [tel2 setTextAlignment:NSTextAlignmentRight];
+    tel2.text = @"تلفن گویا: 134";
+    [self.view addSubview:tel2];
+    
+    
+    UILabel *sms = [[UILabel alloc]initWithFrame:CGRectMake(-10,200, self.view.bounds.size.width, 50)];
     
     [sms setAdjustsFontSizeToFitWidth:YES];
     [sms setFont:[UIFont fontWithName:@"B Koodak" size:17]];
@@ -97,7 +109,7 @@
     sms.text = @"شماره پیامک : 20134";
     [self.view addSubview:sms];
     
-    UILabel *site = [[UILabel alloc]initWithFrame:CGRectMake(-10,200, self.view.bounds.size.width, 50)];
+    UILabel *site = [[UILabel alloc]initWithFrame:CGRectMake(-10,240, self.view.bounds.size.width, 50)];
     
     [site setAdjustsFontSizeToFitWidth:YES];
     [site setFont:[UIFont fontWithName:@"B Koodak" size:17]];
@@ -116,6 +128,16 @@
     [developer setTextAlignment:NSTextAlignmentCenter];
     developer.text = @"Designed by ayandeh majazi co.";
     [self.view addSubview:developer];
+    
+    UILabel *developerWebsite = [[UILabel alloc]initWithFrame:CGRectMake(0,self.view.bounds.size.height-40, self.view.bounds.size.width, 50)];
+    
+    [developerWebsite setAdjustsFontSizeToFitWidth:YES];
+    [developerWebsite setFont:[UIFont fontWithName:@"B Koodak" size:11]];
+    [developerWebsite setBackgroundColor:[UIColor clearColor]];
+    [developerWebsite setTextColor:[UIColor whiteColor]];
+    [developerWebsite setTextAlignment:NSTextAlignmentCenter];
+    developerWebsite.text = @"www.Gamamn.ir";
+    [self.view addSubview:developerWebsite];
     
 //    ایمیل سازمان : pr@irimo.ir
 //    تلفکس:  021-66070014
