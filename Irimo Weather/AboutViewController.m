@@ -25,7 +25,7 @@
     self.view.opaque = NO;
     [self.view addSubview:self.blurredOverlayView];
     
-    self.navigationBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 64)];
+    self.navigationBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 34, CGRectGetWidth(self.view.bounds), 45)];
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.tintColor = [UIColor colorWithWhite:1 alpha:0.7];
@@ -46,7 +46,7 @@
     
     
     MKPersianFont *title2 = [[MKPersianFont alloc]init];
-    [title2 setPersianFont:@"koodak" withText:@"برگشت" fontSize:19 textAlignment:CENTER textWrapped:YES fontColor:[UIColor whiteColor]];
+    [title2 setPersianFont:@"koodak" withText:@"بازگشت" fontSize:19 textAlignment:CENTER textWrapped:YES fontColor:[UIColor whiteColor]];
     [title2 setFrame:CGRectMake(3,10, 60 ,20)];
     
     [button addSubview:title2];

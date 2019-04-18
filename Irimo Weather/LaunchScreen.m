@@ -9,22 +9,15 @@
 #import "LaunchScreen.h"
 #import "ZYQSphereView.h"
 #import "Gradient.h"
-#import "Settings.h"
-#import "DBManager.h"
-#import "UIImage+ImageEffects.h"
-#import "AddLocationViewController.h"
 #import "MainViewController.h"
 
 @interface LaunchScreen ()
 {
     ZYQSphereView *sphereView;
     NSTimer *timer;
-    Settings *setting;
 }
 
 @property (strong, nonatomic) UIView *ribbon;
-
-
 
 @end
 
@@ -121,12 +114,11 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-    MainViewController *destination = [segue destinationViewController];
-
-}
+//// In a storyboard-based application, you will often want to do a little preparation before navigation
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//
+//
+//}
 
 
 @end

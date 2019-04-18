@@ -180,6 +180,11 @@
                 [self initializeCirclesForIphone6plus];
                 
             }
+            else if ([[UIScreen mainScreen] bounds].size.height == 812)
+            {
+                [self initializeCirclesForIphoneX];
+                
+            }
             else
             {
                 [self initializeCirclesForIphone4s];
@@ -202,7 +207,7 @@
 
 -(void)initializeDayLabels:(NSInteger)fontSize
 {
-    self.forcastDaylabel1 = [[UILabel alloc]initWithFrame:CGRectMake(self.ribbonDayOne.bounds.size.width-55,2, 50, 20)];
+    self.forcastDaylabel1 = [[UILabel alloc]initWithFrame:CGRectMake(self.ribbonDayOne.bounds.size.width-55,3, 50, 20)];
     [self.forcastDaylabel1 setAdjustsFontSizeToFitWidth:YES];
     [self.forcastDaylabel1 setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
     [self.forcastDaylabel1 setBackgroundColor:[UIColor clearColor]];
@@ -211,7 +216,7 @@
     
     [self.ribbonDayOne addSubview:self.forcastDaylabel1];
     
-    self.forcastDaylabel2 = [[UILabel alloc]initWithFrame:CGRectMake(self.ribbonDayTwo.bounds.size.width-55,2, 50, 20)];
+    self.forcastDaylabel2 = [[UILabel alloc]initWithFrame:CGRectMake(self.ribbonDayTwo.bounds.size.width-55,3, 50, 20)];
     [self.forcastDaylabel2 setAdjustsFontSizeToFitWidth:YES];
     [self.forcastDaylabel2 setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
     [self.forcastDaylabel2 setBackgroundColor:[UIColor clearColor]];
@@ -220,7 +225,7 @@
     
     [self.ribbonDayTwo addSubview:self.forcastDaylabel2];
     
-    self.forcastDaylabel3 = [[UILabel alloc]initWithFrame:CGRectMake(self.ribbonDayThree.bounds.size.width-55,2, 50, 20)];
+    self.forcastDaylabel3 = [[UILabel alloc]initWithFrame:CGRectMake(self.ribbonDayThree.bounds.size.width-55,3, 50, 20)];
     [self.forcastDaylabel3 setAdjustsFontSizeToFitWidth:YES];
     [self.forcastDaylabel3 setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
     [self.forcastDaylabel3 setBackgroundColor:[UIColor clearColor]];
@@ -237,7 +242,7 @@
     [self.highTemperatureLabel1 setAdjustsFontSizeToFitWidth:YES];
     [self.highTemperatureLabel1 setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
     [self.highTemperatureLabel1 setBackgroundColor:[UIColor clearColor]];
-    [self.highTemperatureLabel1 setTextColor:[UIColor redColor]];
+    [self.highTemperatureLabel1 setTextColor:[UIColor darkGrayColor]];
     [self.highTemperatureLabel1 setTextAlignment:NSTextAlignmentCenter];
     self.highTemperatureLabel1.alpha = .65;
     [self.ribbonDayOne addSubview:self.highTemperatureLabel1];
@@ -246,7 +251,7 @@
     [self.highTemperatureLabel2 setAdjustsFontSizeToFitWidth:YES];
     [self.highTemperatureLabel2 setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
     [self.highTemperatureLabel2 setBackgroundColor:[UIColor clearColor]];
-    [self.highTemperatureLabel2 setTextColor:[UIColor redColor]];
+    [self.highTemperatureLabel2 setTextColor:[UIColor darkGrayColor]];
     [self.highTemperatureLabel2 setTextAlignment:NSTextAlignmentCenter];
     self.highTemperatureLabel2.alpha = .65;
     [self.ribbonDayTwo addSubview:self.highTemperatureLabel2];
@@ -255,7 +260,7 @@
     [self.highTemperatureLabel3 setAdjustsFontSizeToFitWidth:YES];
     [self.highTemperatureLabel3 setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
     [self.highTemperatureLabel3 setBackgroundColor:[UIColor clearColor]];
-    [self.highTemperatureLabel3 setTextColor:[UIColor redColor]];
+    [self.highTemperatureLabel3 setTextColor:[UIColor darkGrayColor]];
     [self.highTemperatureLabel3 setTextAlignment:NSTextAlignmentCenter];
     self.highTemperatureLabel3.alpha = .65;
     [self.ribbonDayThree addSubview:self.highTemperatureLabel3];
@@ -265,7 +270,7 @@
     [self.minTemperatureLabel1 setAdjustsFontSizeToFitWidth:YES];
     [self.minTemperatureLabel1 setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
     [self.minTemperatureLabel1 setBackgroundColor:[UIColor clearColor]];
-    [self.minTemperatureLabel1 setTextColor:[UIColor blueColor]];
+    [self.minTemperatureLabel1 setTextColor:[UIColor grayColor]];
     [self.minTemperatureLabel1 setTextAlignment:NSTextAlignmentCenter];
     self.minTemperatureLabel1.alpha = .7;
     [self.ribbonDayOne addSubview:self.minTemperatureLabel1];
@@ -274,7 +279,7 @@
     [self.minhTemperatureLabel2 setAdjustsFontSizeToFitWidth:YES];
     [self.minhTemperatureLabel2 setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
     [self.minhTemperatureLabel2 setBackgroundColor:[UIColor clearColor]];
-    [self.minhTemperatureLabel2 setTextColor:[UIColor blueColor]];
+    [self.minhTemperatureLabel2 setTextColor:[UIColor grayColor]];
     [self.minhTemperatureLabel2 setTextAlignment:NSTextAlignmentCenter];
     self.minhTemperatureLabel2.alpha = .7;
     [self.ribbonDayTwo addSubview:self.minhTemperatureLabel2];
@@ -283,7 +288,7 @@
     [self.minhTemperatureLabel3 setAdjustsFontSizeToFitWidth:YES];
     [self.minhTemperatureLabel3 setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
     [self.minhTemperatureLabel3 setBackgroundColor:[UIColor clearColor]];
-    [self.minhTemperatureLabel3 setTextColor:[UIColor blueColor]];
+    [self.minhTemperatureLabel3 setTextColor:[UIColor grayColor]];
     [self.minhTemperatureLabel3 setTextAlignment:NSTextAlignmentCenter];
     self.minhTemperatureLabel3.alpha = .7;
     [self.ribbonDayThree addSubview:self.minhTemperatureLabel3];
@@ -368,7 +373,7 @@
     UIImageView *image2 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
     [image2 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
     
-    UIImageView *image3 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
+    UIImageView *image3 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipseWind.png"]];
     [image3 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
     
     UIImageView *image4 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
@@ -477,7 +482,7 @@
     UIImageView *image2 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
     [image2 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
     
-    UIImageView *image3 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
+    UIImageView *image3 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipseWind.png"]];
     [image3 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
     
     UIImageView *image4 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
@@ -536,7 +541,7 @@
     [self.container addSubview:feelsTempView];
     [feelsTempView addSubview:image6];
     
-    [self initializeCurrentTemperatureLabel:30];
+    [self initializeCurrentTemperatureLabel:35];
     [self initializeWeatherDataLabels:18 labelSize:circleSize Y:6];
     [self initializeUnitLabels:35 X:27 FontSize:8];
     [self initializeForecastDayLabels:14];
@@ -552,10 +557,10 @@
     [image5 addSubview:self.horizentalViewUnitLabel];
     
     [humidityView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.container withOffset:60];
-    [humidityView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.container withOffset:-260];
+    [humidityView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.container withOffset:-253];
     
     [pressureView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.container withOffset:-20];
-    [pressureView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.container withOffset:-210];
+    [pressureView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.container withOffset:-205];
     
     [windSpeedView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.container withOffset:-67];
     [windSpeedView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.container withOffset:-125];
@@ -588,7 +593,7 @@
     UIImageView *image2 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
     [image2 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
     
-    UIImageView *image3 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
+    UIImageView *image3 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipseWind.png"]];
     [image3 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
     
     UIImageView *image4 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
@@ -699,7 +704,7 @@
     UIImageView *image2 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
     [image2 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
     
-    UIImageView *image3 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
+    UIImageView *image3 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipseWind.png"]];
     [image3 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
     
     UIImageView *image4 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
@@ -824,7 +829,7 @@
     UIImageView *image2 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
     [image2 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
     
-    UIImageView *image3 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
+    UIImageView *image3 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipseWind.png"]];
     [image3 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
     
     UIImageView *image4 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
@@ -923,6 +928,116 @@
     [self initializeDayLabels:25];
 }
 
+-(void)initializeCirclesForIphoneX{
+    
+    CGFloat circleSize =70;
+    
+    UIImageView *image1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
+    [image1 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
+    
+    UIImageView *image2 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
+    [image2 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
+    
+    UIImageView *image3 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipseWind.png"]];
+    [image3 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
+    
+    UIImageView *image4 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
+    [image4 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
+    
+    UIImageView *image5 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
+    [image5 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
+    
+    UIImageView *image6 =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"elipse.png"]];
+    [image6 setFrame:CGRectMake(0, 0, circleSize, circleSize)];
+    
+    humidityView = [[UIView alloc]initForAutoLayout];
+    
+    windDirectionView =[[UIView alloc]initForAutoLayout];
+    
+    pressureView =[[UIView alloc]initForAutoLayout];
+    
+    horizentalView =[[UIView alloc]initForAutoLayout];
+    
+    windSpeedView =[[UIView alloc]initForAutoLayout];
+    
+    feelsTempView =[[UIView alloc]initForAutoLayout];
+    
+    
+    UILabel *windDirectionStuff = [[UILabel alloc]initWithFrame:CGRectMake(10,21, 30, 30)];
+    
+    [windDirectionStuff setAdjustsFontSizeToFitWidth:YES];
+    [windDirectionStuff setFont:[UIFont fontWithName:@"B Koodak" size:30]];
+    [windDirectionStuff setBackgroundColor:[UIColor clearColor]];
+    [windDirectionStuff setTextColor:[UIColor whiteColor]];
+    [windDirectionStuff setTextAlignment:NSTextAlignmentRight];
+    windDirectionStuff.text = @"-";
+    [windDirectionView addSubview:windDirectionStuff];
+    
+    self.windDirectionContainer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [self.windDirectionContainer setCenter:image3.center];
+    [self DrawArrow:self.windDirectionContainer];
+    
+    
+    [self.container addSubview:humidityView];
+    [humidityView addSubview:image1];
+    
+    [self.container addSubview:windSpeedView];
+    [windSpeedView addSubview:image2];
+    
+    [self.container addSubview:windDirectionView];
+    [windDirectionView addSubview:image3];
+    
+    [self.container addSubview:pressureView];
+    [pressureView addSubview:image4];
+    
+    [self.container addSubview:horizentalView];
+    [horizentalView addSubview:image5];
+    
+    [self.container addSubview:feelsTempView];
+    [feelsTempView addSubview:image6];
+    
+    [self initializeCurrentTemperatureLabel:30];
+    [self initializeWeatherDataLabels:20 labelSize:circleSize Y:6];
+    [self initializeUnitLabels:40 X:30 FontSize:10];
+    [self initializeForecastDayLabels:14];
+    
+    [image1 addSubview:self.humidityLabel];
+    [image2 addSubview:self.windSpeedLabel];
+    [image3 addSubview:self.windDirectionContainer];
+    [image4 addSubview:self.preasureLabel];
+    [image5 addSubview:self.horizentalViewLabel];
+    [image6 addSubview:self.feelsTempLabel];
+    
+    [image2 addSubview:self.windSpeedUnitLabel];
+    [image4 addSubview:self.preasureUnitLabel];
+    [image5 addSubview:self.horizentalViewUnitLabel];
+    
+    [humidityView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.container withOffset:40];
+    [humidityView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.container withOffset:-290];
+    
+    [pressureView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.container withOffset:-40];
+    [pressureView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.container withOffset:-225];
+    
+    [windSpeedView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.container withOffset:-85];
+    [windSpeedView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.container withOffset:-125];
+    
+    [windDirectionView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.container withOffset:-80];
+    [windDirectionView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.container withOffset:-25];
+    
+    
+    
+    [horizentalView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.container withOffset:-35];
+    [horizentalView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.container withOffset:65];
+    
+    [feelsTempView autoAlignAxis:ALAxisVertical toSameAxisOfView:self.container withOffset:45];
+    [feelsTempView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.container withOffset:135];
+    
+    [self initializeConditionIconLabel:195];
+    [self initializeForecastIconLabels:78];
+    [self initializeCirclesDescription:16 Y:20];
+    [self initializeForcastTempLabels:15 Y1:37 Y2:56 Size:30];
+    [self initializeDayLabels:15];
+}
 #pragma mark Motion Effects
 
 - (void)initializeMotionEffects
@@ -962,7 +1077,7 @@
 {
     const NSInteger fontSize =(self.bounds.size.width/31);
     
-    self.updatedLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.bounds.origin.x, self.locationLabel.bounds.size.height+16, self.bounds.size.width, 20)];
+    self.updatedLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.bounds.origin.x, self.locationLabel.bounds.size.height+30, self.bounds.size.width, 20)];
     [self.updatedLabel setAdjustsFontSizeToFitWidth:YES];
     [self.updatedLabel setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
     [self.updatedLabel setBackgroundColor:[UIColor clearColor]];
@@ -991,7 +1106,7 @@
 
 - (void)initializeConditionDescriptionLabel
 {
-    const NSInteger fontSize = 20;
+    const NSInteger fontSize = 24;
     
     self.conditionDescriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.82 * self.bounds.size.width, 1.15 * self.center.y, 50, fontSize)];
     [self.conditionDescriptionLabel setAdjustsFontSizeToFitWidth:YES];
@@ -1006,7 +1121,7 @@
 - (void)initializeLocationLabel
 {
     const NSInteger fontSize = (self.bounds.size.width/16);
-    self.locationLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.bounds.origin.x, 22, self.bounds.size.width, 1.5 * fontSize)];
+    self.locationLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.bounds.origin.x, 37, self.bounds.size.width, 1.5 * fontSize)];
     [self.locationLabel setAdjustsFontSizeToFitWidth:YES];
     [self.locationLabel setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
     [self.locationLabel setBackgroundColor:[UIColor clearColor]];
@@ -1041,7 +1156,7 @@
     NSArray *forecastContainers = @[self.ribbonDayOne, self.ribbonDayTwo, self.ribbonDayThree];
     for(int i = 0; i < [forecastDayLabels count]; ++i) {
         UILabel *forecastDayLabel = [forecastDayLabels objectAtIndex:i];
-        [forecastDayLabel setFrame:CGRectMake(0, self.ribbonDayOne.bounds.size.height-fontSize-5, self.ribbonDayOne.bounds.size.width, fontSize)];
+        [forecastDayLabel setFrame:CGRectMake(0, self.ribbonDayOne.bounds.size.height-fontSize-14, self.ribbonDayOne.bounds.size.width, fontSize)];
         [forecastDayLabel setAdjustsFontSizeToFitWidth:YES];
         [forecastDayLabel setFont:[UIFont fontWithName:@"B Koodak" size:fontSize]];
         [forecastDayLabel setBackgroundColor:[UIColor clearColor]];
@@ -1067,7 +1182,7 @@
     for(int i = 0; i < [forecastIconLabels count]; ++i) {
         UILabel *forecastIconLabel = [forecastIconLabels objectAtIndex:i];
         
-        [forecastIconLabel setFrame:CGRectMake(self.ribbonDayOne.bounds.size.width/7, self.ribbonDayOne.bounds.size.height/8, fontSize, fontSize)];
+        [forecastIconLabel setFrame:CGRectMake(self.ribbonDayOne.bounds.size.width/7, self.ribbonDayOne.bounds.size.height/8+5, fontSize, fontSize)];
         [forecastIconLabel setFont:[UIFont fontWithName:CLIMACONS_FONT size:fontSize]];
         [forecastIconLabel setBackgroundColor:[UIColor clearColor]];
         [forecastIconLabel setTextColor:[UIColor whiteColor]];
@@ -1181,7 +1296,6 @@
     shapeView.strokeColor = [UIColor whiteColor].CGColor;
     shapeView.fillColor = [UIColor whiteColor].CGColor;
     [shapeView setPath:bezierPath.CGPath];
-
     [[container layer] addSublayer:shapeView];
     
 }
@@ -1224,7 +1338,7 @@
     else if ([condition isEqual:@"27"]||[condition isEqual:@"29"]||[condition isEqual:@"31"])
     {
         RainFall *rain = [[RainFall alloc]init];
-        [rain startRainFall:self.isDay Speed:-100 Amount:10];
+        [rain startRainFall:self.isDay Speed:-100 Amount:20];
         [self.container insertSubview:rain.view atIndex:1];
     }
     else if ([condition isEqual:@"30"])

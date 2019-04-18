@@ -47,7 +47,7 @@
     self.view.opaque = NO;
     [self.view addSubview:self.blurredOverlayView];
     
-    self.ribbon = [[UIView alloc]initWithFrame:CGRectMake(0, 63 , self.view.bounds.size.width, 155)];
+    self.ribbon = [[UIView alloc]initWithFrame:CGRectMake(0, 77 , self.view.bounds.size.width, 155)];
     [self.ribbon setBackgroundColor:[UIColor colorWithWhite:0.2 alpha:0.25]];
     [self.view addSubview:self.ribbon];
     
@@ -70,7 +70,7 @@
     [self.ribbon addSubview:speedTitle];
     
     
-    self.navigationBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 64)];
+    self.navigationBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 34, CGRectGetWidth(self.view.bounds), 45)];
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.tintColor = [UIColor colorWithWhite:1 alpha:0.7];
@@ -91,7 +91,7 @@
     
     
     MKPersianFont *title2 = [[MKPersianFont alloc]init];
-    [title2 setPersianFont:@"koodak" withText:@"برگشت" fontSize:19 textAlignment:CENTER textWrapped:YES fontColor:[UIColor whiteColor]];
+    [title2 setPersianFont:@"koodak" withText:@"بازگشت" fontSize:19 textAlignment:CENTER textWrapped:YES fontColor:[UIColor whiteColor]];
     [title2 setFrame:CGRectMake(3,10, 60 ,20)];
     
     [button addSubview:title2];

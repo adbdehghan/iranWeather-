@@ -68,6 +68,7 @@
 		645B69A01A36562A004E6363 /* Climacons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 645B699F1A36562A004E6363 /* Climacons.ttf */; };
 		645FB1321A5AB20D00FBCB36 /* PendulumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DBF78C1A4C54B500589D1F /* PendulumView.m */; };
 		64695C321A434F18007F2732 /* JCDHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64695C311A434F18007F2732 /* JCDHTTPConnection.m */; };
+		647D75891AC3F29E0085590B /* elipseWind.png in Resources */ = {isa = PBXBuildFile; fileRef = 647D75881AC3F29E0085590B /* elipseWind.png */; };
 		647DE7331A42E57F0009D24A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647DE7321A42E57F0009D24A /* MainViewController.m */; };
 		648E1BB51A586321005F222C /* cities.xml in Resources */ = {isa = PBXBuildFile; fileRef = 648E1BB41A586321005F222C /* cities.xml */; };
 		648E7F7A1A53408E00F1CD6F /* CHTumblrMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 648E7F791A53408E00F1CD6F /* CHTumblrMenuView.m */; };
@@ -213,6 +214,7 @@
 		645B699F1A36562A004E6363 /* Climacons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Climacons.ttf; sourceTree = "<group>"; };
 		64695C301A434F18007F2732 /* JCDHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCDHTTPConnection.h; path = ../JCDHTTPConnection.h; sourceTree = "<group>"; };
 		64695C311A434F18007F2732 /* JCDHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCDHTTPConnection.m; path = ../JCDHTTPConnection.m; sourceTree = "<group>"; };
+		647D75881AC3F29E0085590B /* elipseWind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elipseWind.png; sourceTree = "<group>"; };
 		647DE7311A42E57F0009D24A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		647DE7321A42E57F0009D24A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		648E1BB41A586321005F222C /* cities.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cities.xml; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 		64DBF7851A4B49BB00589D1F /* main */ = {
 			isa = PBXGroup;
 			children = (
+				647D75881AC3F29E0085590B /* elipseWind.png */,
 				64DBF7881A4B916100589D1F /* elipse.png */,
 				64DBF7861A4B49BB00589D1F /* MainImage.png */,
 			);
@@ -731,7 +734,7 @@
 				TargetAttributes = {
 					645B69561A360FF4004E6363 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 2Y3WDQ97KT;
+						DevelopmentTeam = D5G8SK67F3;
 					};
 					645B696F1A360FF4004E6363 = {
 						CreatedOnToolsVersion = 6.1;
@@ -776,6 +779,7 @@
 				6407DEC01A5B3D24007C215F /* 2.png in Resources */,
 				64DBF7871A4B49BC00589D1F /* MainImage.png in Resources */,
 				64DBF7891A4B916100589D1F /* elipse.png in Resources */,
+				647D75891AC3F29E0085590B /* elipseWind.png in Resources */,
 				648E7FA31A537F8400F1CD6F /* btn_close_selected@2x.png in Resources */,
 				6407DEB61A5B3D24007C215F /* 10.png in Resources */,
 				6407DEC91A5B3D24007C215F /* 6.png in Resources */,
@@ -980,17 +984,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = c99;
+				DEVELOPMENT_TEAM = D5G8SK67F3;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Irimo Weather/SphereView_Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Irimo Weather/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "Irimo Weather";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1002,18 +1008,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = c99;
+				DEVELOPMENT_TEAM = D5G8SK67F3;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Irimo Weather/SphereView_Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Irimo Weather/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				"OTHER_CFLAGS[arch=*]" = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_CFLAGS = "";
+				"OTHER_CFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "Irimo Weather";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

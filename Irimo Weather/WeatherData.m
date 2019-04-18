@@ -18,11 +18,8 @@
 {
     self.stationCode = [[data valueForKey:@"wmo_code"]valueForKey:@"text"];
     self.stationName = [[data valueForKey:@"station_farsi"]valueForKey:@"text"];
-    
-    lastUpdateText =[[data valueForKey:@"file"]valueForKey:@"name"];
-    lastUpdateText =[lastUpdateText stringByReplacingOccurrencesOfString:@"android" withString:@""];
-    lastUpdateText =[lastUpdateText stringByReplacingOccurrencesOfString:@".xml" withString:@""];
-    
+
+    lastUpdateText =  [[data valueForKey:@"data_time"]valueForKey:@"text"];
     self.lastUpdate = [self getLastUpdateTime:lastUpdateText];
     
     self.humidity = [[data valueForKey:@"u"]valueForKey:@"text"];
@@ -52,10 +49,17 @@
     self.forecastIconTwoLabel = [self iconForCondition:[[data valueForKey:@"dayph2"] valueForKey:@"text"] isDay:[self isDay]];
     self.forecastIconThreeLabel = [self iconForCondition:[[data valueForKey:@"dayph3"] valueForKey:@"text"] isDay:[self isDay]];
     
-    self.forcastDaylabel1 = [self GetForcastDay:lastUpdateText index:1];
-    self.forcastDaylabel2 = [self GetForcastDay:lastUpdateText index:2];
-    self.forcastDaylabel3 = [self GetForcastDay:lastUpdateText index:3];
+//    self.forcastDaylabel1 = [self GetForcastDay:lastUpdateText index:1];
+//    self.forcastDaylabel2 = [self GetForcastDay:lastUpdateText index:2];
+//    self.forcastDaylabel3 = [self GetForcastDay:lastUpdateText index:3];
+    NSDate *currDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSSS'"];
+    NSString *dateString = [dateFormatter stringFromDate:currDate];
     
+    self.forcastDaylabel1 = [self GetForcastDay:dateString index:1];
+    self.forcastDaylabel2 = [self GetForcastDay:dateString index:2];
+    self.forcastDaylabel3 = [self GetForcastDay:dateString index:3];
 }
 
 - (NSString *)iconForCondition:(NSString *)condition isDay:(BOOL)isday
@@ -199,7 +203,7 @@
                                      ,@"بارش برف"
                                      ,@"تگرگ"
                                      ,@"کولاک برف"
-                                     ,@"توفان و گردوخاک"
+                                     ,@"طوفان و گردوخاک"
                                      ,@"دریا آرام"
                                      ,@"دریا مواج"
                                      ,@"هوا آلوده"
@@ -215,7 +219,7 @@
 -(NSString*)GetForcastDay:(NSString*)date index:(NSInteger)dayOfWeek
 {
     NSDateFormatter *nowDateFormatter = [[NSDateFormatter alloc] init];
-    [nowDateFormatter setDateFormat:@"yyyyMMddHHmm"];
+    [nowDateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSSS'"];
     NSDate *dateFromString = [nowDateFormatter dateFromString:date];
     NSDate *newDate = [dateFromString dateByAddingTimeInterval:(3*60*60)+(30*60)];
     
@@ -239,36 +243,27 @@
 -(NSString*)getLastUpdateTime:(NSString*)dateTime
 {
     NSDateFormatter *nowDateFormatter = [[NSDateFormatter alloc] init];
-    [nowDateFormatter setDateFormat:@"yyyyMMddHHmm"];
-    NSDate *dateFromString = [nowDateFormatter dateFromString:dateTime];
-    NSDate *newDate = [dateFromString dateByAddingTimeInterval:(3*60*60)+(30*60)];
+    [nowDateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSSS'"];
+    NSDate* sourceDate = [nowDateFormatter dateFromString:dateTime];
+    NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    NSTimeZone* destinationTimeZone = [NSTimeZone systemTimeZone];
     
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:newDate];
-    NSInteger hour = [components hour];
-    NSInteger minute = [components minute];
+    NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:sourceDate];
+    NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:sourceDate];
+    NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
     
-    if (hour==0) {
-        hour =24;
-    }
+    NSDate* destinationDate = [[NSDate alloc] initWithTimeInterval:interval sinceDate:sourceDate];
     
-    NSDateComponents *componentsNow = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]];
-    NSInteger hourNow = [componentsNow hour];
-    NSInteger minuteNow = [componentsNow minute];
     
-    if (hourNow==0) {
-        hourNow = 24;
-    }
     
-    NSInteger hourNew = (hourNow - hour)*60;
-    NSInteger minuteNew = (minuteNow - minute);
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [gregorianCalendar components:NSMinuteCalendarUnit
+                                                        fromDate:destinationDate
+                                                          toDate:[NSDate date]
+                                                         options:0];
     
-    NSInteger lastUpdate = hourNew+minuteNew;
-    NSString *timeH =[NSString stringWithFormat:@"%ld",(long)lastUpdate];
     
-    timeH= [ timeH stringByAppendingString:@" دقیقه قبل"];
-    
-    return timeH;
+    return [[NSString stringWithFormat:@"%ld" ,(long)[components minute]]stringByAppendingString:@" دقیقه قبل "];
 }
 
 -(BOOL)isDay{

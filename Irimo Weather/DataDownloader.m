@@ -41,9 +41,7 @@ NSMutableDictionary *warningsData;
 
 - (void)requestDataForLocation:(CLLocation *)location withCallback:(RequestCompleteBlock)callback
 {
-    CLLocationCoordinate2D coordinates = location.coordinate;
-    
-    
+       
     NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://mshapp.sms1000.ir/data/%@.xml",@""]]];
     
     JCDHTTPConnection *connection = [[JCDHTTPConnection alloc] initWithRequest:request];

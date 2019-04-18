@@ -42,7 +42,7 @@ APPaginalTableViewDelegate >
     self.view.opaque = NO;
     [self.view addSubview:self.blurredOverlayView];
     
-    container = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height-64)];
+    container = [[UIView alloc]initWithFrame:CGRectMake(0, 85, self.view.bounds.size.width, self.view.bounds.size.height-85)];
     [self.view addSubview:container];
     
     PendulumView *pendulum = [[PendulumView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-50, self.view.frame.size.height/2, 100, 40) ballColor:[UIColor whiteColor] ballDiameter:14];
@@ -50,7 +50,7 @@ APPaginalTableViewDelegate >
     [self.view addSubview:pendulum];
     
     
-    self.navigationBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 64)];
+    self.navigationBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 34, CGRectGetWidth(self.view.bounds), 45)];
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.tintColor = [UIColor colorWithWhite:1 alpha:0.7];
@@ -71,8 +71,8 @@ APPaginalTableViewDelegate >
     
     
     MKPersianFont *title2 = [[MKPersianFont alloc]init];
-    [title2 setPersianFont:@"koodak" withText:@"برگشت" fontSize:19 textAlignment:CENTER textWrapped:YES fontColor:[UIColor whiteColor]];
-    [title2 setFrame:CGRectMake(3,10, 60 ,20)];
+    [title2 setPersianFont:@"koodak" withText:@"بازگشت" fontSize:19 textAlignment:CENTER textWrapped:YES fontColor:[UIColor whiteColor]];
+    [title2 setFrame:CGRectMake(3,8, 60 ,20)];
     
     [button addSubview:title2];
     

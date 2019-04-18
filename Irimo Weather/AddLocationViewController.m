@@ -33,10 +33,12 @@
 @property (strong, nonatomic) UISearchBar                   *searchBar;
 
 // Navigation bar at the top of the view
-@property (strong, nonatomic) UINavigationBar               *navigationBar;
+@property (strong, nonatomic) UINavigationBar *navigationBar;
+
+@property (strong, nonatomic) UINavigationItem *navigationItem;
 
 // Done button inside navigation bar
-@property (strong, nonatomic) UIBarButtonItem               *doneButton;
+@property (strong, nonatomic) UIBarButtonItem *doneButton;
 
 @property (strong, nonatomic) DataDownloader *getData;
 
@@ -94,6 +96,7 @@
             
             self.filterdCitiesList = [[NSMutableArray alloc]initWithCapacity:[self.citiesList count]];
             [self.tableView reloadData];
+            
             [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
             [self.searchController setActive:YES animated:NO];
             [self.searchController.searchBar becomeFirstResponder];
@@ -125,44 +128,48 @@
 }
 
 - (void)InitializeObjects {
-    self.navigationBar =[[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 64)];
     
+    self.navigationBar =[[UINavigationBar alloc]initWithFrame:CGRectMake(0, 75, self.view.bounds.size.width, 75)];
+
     [self.view addSubview:self.navigationBar];
     
-    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
     
-    [button addTarget:self action:@selector(doneButtonPressed)forControlEvents:UIControlEventTouchUpInside];
-    [button setFrame:CGRectMake(0, 0, 53, 31)];
-    
-    
-    MKPersianFont *title = [[MKPersianFont alloc]init];
-    [title setPersianFont:@"koodak" withText:@"برگشت" fontSize:19 textAlignment:CENTER textWrapped:YES fontColor:[UIColor whiteColor]];
-    [title setFrame:CGRectMake(3,10, 60 ,20)];
-    
-    [button addSubview:title];
-    
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.rightBarButtonItem = barButton;
-    
-    self.doneButton = barButton;
-    
-    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextAlignment:NSTextAlignmentRight];
-    
-    // Inititalize and configure search bar
-    self.searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, 44)];
-    self.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.searchBar.placeholder = @"لطفا شهر مورد نظر خود را وارد کنید";
-    self.searchBar.delegate = self;
-    self.searchBar.backgroundColor = [UIColor clearColor];
+    self.searchBar = [UISearchBar new];
+    self.searchBar.showsCancelButton = YES;
+    [self.searchBar sizeToFit];
+    self.searchBar.placeholder = @"نام شهر یا روستای خود را وارد نایید";
 
-    // Initialize and configure search controller
-    self.searchController = [[UISearchDisplayController alloc]initWithSearchBar:self.searchBar contentsController:self];
+    UIView *barWrapper = [[UIView alloc]initWithFrame:CGRectMake(0, 45, self.searchBar.frame.size.width, self.searchBar.frame.size.height)];
+    [barWrapper addSubview:self.searchBar];
+    [barWrapper setBackgroundColor:[UIColor clearColor]];
+    
+    self.navigationItem =[[UINavigationItem alloc] initWithTitle:@""];
+    
+    self.navigationItem.titleView = barWrapper;
+
+    [self.navigationBar setItems:[NSArray arrayWithObject:self.navigationItem] animated:YES];
+    
+    
+    self.searchBar.delegate = self;
+    self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    
+    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
     self.searchController.delegate = self;
-    self.searchController.searchResultsDelegate = self;
     self.searchController.searchResultsDataSource = self;
-    self.searchController.displaysSearchBarInNavigationBar = YES;
-    self.searchController.navigationItem.rightBarButtonItems = @[self.doneButton];
-    self.navigationBar.items = @[self.searchController.navigationItem];
+    
+
+    [[UIBarButtonItem appearanceWhenContainedIn: [UISearchBar class], nil] setTitle:@"بازگشت"];
+    
+    [[UIBarButtonItem appearanceWhenContainedIn: [UISearchBar class], nil] setTitleTextAttributes:@{
+                                                             NSFontAttributeName : [UIFont fontWithName:@"B Koodak" size:15]
+                                                             } forState:UIControlStateNormal];
+    
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+
+      [self performSegueWithIdentifier:@"addLocationToMain" sender:self];
 }
 
 #pragma mark UIViewController Methods
@@ -197,8 +204,8 @@
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView
 {
-    [tableView setFrame:CGRectMake(0, CGRectGetHeight(self.navigationBar.bounds), CGRectGetWidth(self.view.bounds),
-                                   CGRectGetHeight(self.view.bounds) - CGRectGetHeight(self.navigationBar.bounds))];
+//    [tableView setFrame:CGRectMake(0, CGRectGetHeight(self.navigationBar.bounds), CGRectGetWidth(self.view.bounds),
+//                                   CGRectGetHeight(self.view.bounds) - CGRectGetHeight(self.navigationBar.bounds))];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.backgroundColor = [UIColor clearColor];
     tableView.delegate = self;
@@ -217,6 +224,7 @@
         [self.view addSubview:tableView];
     }
 }
+
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {

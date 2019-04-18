@@ -26,7 +26,7 @@
 @property (strong, nonatomic)  NSMutableArray *filterdCitiesList;
 @property (strong, nonatomic)  NSMutableArray *citiesList;
 @property (strong, nonatomic)  UITableView *citiesTable;
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong)  UITableView *tableView;
 // -----
 // @name Properties
 // -----

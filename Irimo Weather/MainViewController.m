@@ -25,8 +25,7 @@
 #import "AboutViewController.h"
 #import "XMLReader.h"
 
-#define kMIN_TIME_SINCE_UPDATE          3600
-#define kMAX_NUM_WEATHER_VIEWS          5
+
 #define kLOCAL_WEATHER_VIEW_TAG         0
 
 @interface MainViewController ()
@@ -381,8 +380,6 @@
 }
 
 - (void)initializeSubviews
-
-
 {
     //  Initialize the paging scroll wiew
     self.pagingScrollView = [[PagingScrollView alloc]initWithFrame:self.view.bounds];
@@ -401,7 +398,7 @@
 - (void)initializeAddLocationButton
 {
     self.addLocationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    UILabel *plusLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+    UILabel *plusLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 20, 44, 44)];
     [plusLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:40]];
     [plusLabel setTextAlignment:NSTextAlignmentCenter];
     [plusLabel setTextColor:[UIColor whiteColor]];
@@ -418,7 +415,7 @@
     self.settingsButton = [[UIButton alloc]init];
     [self.settingsButton setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
     [self.settingsButton setTintColor:[UIColor whiteColor]];
-    [self.settingsButton setFrame:CGRectMake(self.view.bounds.size.width-44, 12, 44, 44)];
+    [self.settingsButton setFrame:CGRectMake(self.view.bounds.size.width-49, 29, 44, 44)];
     [self.settingsButton setShowsTouchWhenHighlighted:YES];
     [self.settingsButton addTarget:self action:@selector(menuButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.settingsButton];
@@ -511,16 +508,49 @@
     //  Only add the local weather view if location services authorized
     if(status == kCLAuthorizationStatusAuthorized) {
         
-    } else if(status != kCLAuthorizationStatusNotDetermined) {
-        
-    }else if(status == kCLAuthorizationStatusNotDetermined) {
+    }
+
+    else if(status == kCLAuthorizationStatusNotDetermined)
+    {
         [self.locationManager requestAlwaysAuthorization];
         [self.locationManager requestWhenInUseAuthorization];
-    }else if(status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusRestricted) {
+    }
+    else if(status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusRestricted) {
         //  If location services are disabled and no saved weather data is found, show the add location view controller
+
+
+
         if([self.pagingScrollView.subviews count] == 0) {
+     
             [self performSegueWithIdentifier:@"MainToAddLocation" sender:self];
         }
+        else
+        {
+            for (WeatherView* localView in self.pagingScrollView.subviews) {
+                
+                if (localView.tag == 0) {
+                    [self.pagingScrollView removeSubview:localView];
+                    self.pageControl.numberOfPages -= 1;
+                }
+            }
+            if([self.pagingScrollView.subviews count]==0)
+            {
+                [self performSegueWithIdentifier:@"MainToAddLocation" sender:self];
+            }
+        }
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    //  If the local weather view has no data and a location could not be determined, show a failure message
+    for(WeatherView *weatherView in self.pagingScrollView.subviews) {
+        if (weatherView.tag==0)
+        {
+            //   weatherView.conditionIconLabel.text = @"☹";
+            weatherView.locationLabel.text = @"موقعیت پیدا نشد!";
+        }
+
     }
 }
 
@@ -588,7 +618,7 @@
     
     [weatherView spinLayer:weatherView.windDirectionContainer.layer duration:.7 direction:-1 degrees:[wd.windDirection floatValue]+180 wind:wd.windSpeed];
     [weatherView setWeatherCondition:wd.conditionDescriptionForVisualEffect];
-    
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -647,7 +677,7 @@
                 for(WeatherView *weatherView in self.pagingScrollView.subviews) {
                     if (weatherView.tag==0) {
                         [self UpdateWeatherViewWithData:wd weatherView:weatherView];
-                        weatherView.locationLabel.text=[weatherView.locationLabel.text stringByAppendingString:@"➣"];
+//                        weatherView.locationLabel.text=[weatherView.locationLabel.text stringByAppendingString:@"➣"];
                     }
                 }
                 
@@ -671,17 +701,6 @@
     
 }
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    //  If the local weather view has no data and a location could not be determined, show a failure message
-    for(WeatherView *weatherView in self.pagingScrollView.subviews) {
-        if (weatherView.tag==0)
-        {
-            //   weatherView.conditionIconLabel.text = @"☹";
-            weatherView.locationLabel.text = @"موقعیت پیدا نشد!";
-        }
-    }
-}
 
 -(NSString*)ConvertTemperature:(NSString*)temperature
 {
